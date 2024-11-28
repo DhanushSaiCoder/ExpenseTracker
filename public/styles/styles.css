@@ -1,149 +1,170 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Lexend", sans-serif;
-    scrollbar-width: none;
-    color: #e6e6fa;
-  }
-  
-  :root {
-    --hoverColor: rgba(255, 255, 255, 0.12);
-  }
-  
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  body {
-    font-family: "Lexend", sans-serif;
-    background: linear-gradient(
-      170deg,
-      rgba(14, 3, 45, 0.95),
-      rgba(19, 0, 36, 0.95)
-    );
-    color: #dcf1ff;
-    background-attachment: fixed;
-  }
-  
-  header {
-    padding: 15px 20px;
-    background-color: rgba(136, 0, 255, 0.065);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1012);
-  }
-  
-  header h1 {
-    width: 90%;
-    margin: 0;
-  }
-  
-  #logOut {
-    width: auto;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-  }
-  
-  #logOutBtn,
-  #signOutBtn {
-    width: 85px;
-    height: 100%;
-    margin: 0;
-    background-color: rgba(255, 255, 255, 0.065);
-    color: #dcf1ff;
-    border: none;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1012);
-  }
-  
-  #logOutBtn {
-    border-radius: 5px 0 0 5px;
-    border-right: 1px solid rgba(255, 255, 255, 0.169);
-  }
-  
-  #signOutBtn {
-    border-radius: 0 5px 5px 0;
-    color: #ff7474;
-  }
-  
-  #signOutBtn:hover,
-  #logOutBtn:hover {
-    cursor: pointer;
-    background-color: var(--hoverColor);
-  }
-  
-  .sidebar {
-    width: 200px;
-    height: 100vh;
-    background-color: rgba(14, 3, 45, 0.195);
-    color: #fff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 5;
-    margin-top: 75px;
-    padding: 30px 20px;
-    border-right: 1px solid var(--hoverColor);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1012);
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    padding: 15px;
-    text-align: left;
-  }
-  
-  .sidebar ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    display: block;
-  }
-  
-  .sidebar ul li a:hover {
-    background-color: var(--hoverColor);
-  }
-  
-  #content {
-    margin-left: 200px;
-    margin-top: 75px;
-    padding: 20px;
-    height: calc(100vh - 75px);
-    overflow-y: auto;
-  }
-  
-  .navBtns {
-    background: transparent;
-    border: none;
-    font-size: large;
-    text-align: left;
-    padding: 5px 10px;
-    color: #d3d3d3;
-  }
-  
-  .navBtns:hover {
-    background-color: var(--hoverColor);
-    cursor: pointer;
-  }
-  
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Lexend", sans-serif;
+  scrollbar-width: none;
+  color: #e6e6fa;
+  user-select: none;
+}
+
+:root {
+  --hoverColor: rgba(255, 255, 255, 0.12);
+  --activeColor: #ffd700;
+  --secondaryColor: #ffd700;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Lexend", sans-serif;
+  background: linear-gradient(
+    170deg,
+    rgba(14, 3, 45, 0.95),
+    rgba(19, 0, 36, 0.95)
+  );
+  color: #dcf1ff;
+  background-attachment: fixed;
+}
+
+header {
+  padding: 15px 20px;
+  background-color: rgba(136, 0, 255, 0.065);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1012);
+}
+
+header h1 {
+  width: 90%;
+  margin: 0;
+}
+
+#logOut {
+  width: auto;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+#logOutBtn,
+#signOutBtn {
+  width: 85px;
+  height: 100%;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.065);
+  color: #dcf1ff;
+  border: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1012);
+}
+
+#logOutBtn {
+  border-radius: 5px 0 0 5px;
+  border-right: 1px solid rgba(255, 255, 255, 0.169);
+}
+
+#signOutBtn {
+  border-radius: 0 5px 5px 0;
+  color: #ff7474;
+}
+
+#signOutBtn:hover,
+#logOutBtn:hover {
+  cursor: pointer;
+  background-color: var(--hoverColor);
+}
+
+.sidebar {
+  width: 280px;
+  height: 100vh;
+  background-color: rgba(14, 3, 45, 0.195);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  margin-top: 75px;
+  padding: 30px 20px;
+  border-right: 1px solid var(--hoverColor);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1012);
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  text-align: left;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  background-color: var(--hoverColor);
+}
+
+#content {
+  margin-left: 280px;
+  margin-top: 75px;
+  padding: 20px;
+  height: calc(100vh - 75px);
+  overflow-y: auto;
+}
+
+.navBtns {
+  background: transparent;
+  border: none;
+  font-size: large;
+  text-align: left;
+  padding: 5px 10px;
+  color: #d3d3d3;
+  opacity: 0.6;
+}
+
+.navBtns:hover {
+  cursor: pointer;
+  color: #ffe865;
+}
+.active {
+  opacity: 1;
+  color: var(--secondaryColor);
+}.navBtns.active {
+    color: #FFD700; /* Gold color for active button text */
+    position: relative; /* To position the dot correctly */
+}
+
+.navBtns.active::before {
+    content: "•"; /* Unicode character for the dot */
+    font-size: 18px; /* Adjust size if needed */
+    margin-right: 8px; /* Space between dot and text */
+    color: #FFD700; /* Same color as the text */
+    position: absolute;
+    left: -12px; /* Position the dot to the left of the text */
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center the dot */
+}

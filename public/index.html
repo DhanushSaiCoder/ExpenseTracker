@@ -23,20 +23,23 @@
     </header>
     <nav class="sidebar">
       <ul>
-        <li><button class="navBtns">Dashboard</button></li>
-        <li><button class="navBtns">Latest Expenses</button></li>
-        <li><button class="navBtns">Add Expense</button></li>
-        <li><button class="navBtns">Categories</button></li>
-        <li><button class="navBtns">Reports</button></li>
-        <li><button class="navBtns">Settings</button></li>
-        <li><button class="navBtns">Profile</button></li>
+        <li><button id="dashboardBtn" onclick="openDashboard()" class="navBtns active">Dashboard</button></li>
+        <li><button id="latestExpensesBtn" onclick="openLatestExpenses()" class="navBtns">Latest Expenses</button></li>
+        <li><button id="addExpenseBtn" onclick="openAddExpense()" class="navBtns">Add Expense</button></li>
+        <li><button id="categoriesBtn" onclick="openCategories()" class="navBtns">Categories</button></li>
+        <li><button id="reportsBtn" onclick="openReports()" class="navBtns">Reports</button></li>
+        <li><button id="profileBtn" onclick="openProfile()" class="navBtns">Profile</button></li>
+        
 
         
       </ul>
     </nav>
     
     <div id="content">
-      <h1>hello</h1>
+      <div id="dashboard">
+        <h2>Dashboard</h2>
+      </div>
     </div>
+    <script src="./scripts/main.js"></script>
   </body>
 </html>
