@@ -1,4 +1,4 @@
-DELETE     http://localhost:3000/expenses/67489768e8e04f2a23225f39
+GET   http://localhost:3000/expenses/67489778e8e04f2a23225f3b
 content-type: application/json
 
 {

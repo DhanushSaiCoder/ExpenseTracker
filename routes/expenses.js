@@ -6,7 +6,17 @@ const { Expense, validateExpense } = require("../models/Expense");
 router.get('/', async (req, res) => {
     try {
         const expenses = await Expense.find()
-        res.send(expenses)
+        res.json(expenses)
+    } catch (error) {
+        console.error("Error getting expense:", error);
+        res.status(500).send({ message: "Internal Server Error" });
+    }
+})
+
+router.get('/:id',async (req,res) => {
+    try {
+        const expense = await Expense.findById(req.params.id)
+        res.json(expense)
     } catch (error) {
         console.error("Error getting expense:", error);
         res.status(500).send({ message: "Internal Server Error" });
