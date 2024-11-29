@@ -3,6 +3,7 @@ window.onload = function () {
     getExpensesFromDB();
     setDefaultView();
 };
+
 if(!localStorage.getItem('token')) window.location.href = '/auth/login'
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
@@ -13,6 +14,10 @@ function setActiveView(viewId) {
     sections.forEach(section => {
         section.style.display = section.id === viewId ? 'flex' : 'none';
     });
+}
+function logout(){
+    localStorage.removeItem('token')
+    window.location.href = '/auth/login'
 }
 
 function setDefaultView() {
