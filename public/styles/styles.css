@@ -168,3 +168,9 @@ header h1 {
     top: 50%;
     transform: translateY(-50%); /* Vertically center the dot */
 }
+#content > div {
+  display: none;
+}
+#dashboard {
+  display: block; /* Show dashboard by default */
+}
