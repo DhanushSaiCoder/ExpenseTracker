@@ -1,3 +1,4 @@
+
 function setActiveView(viewId) {
     const sections = document.querySelectorAll('#content > div');
     sections.forEach(section => {
@@ -75,4 +76,30 @@ function setActiveView(viewId) {
   window.onload = function () {
     setDefaultView();
   };
-  
+  function addExpense(){
+    const amount = document.getElementById('amountInp').value
+    const reason = document.getElementById('reasonInp').value
+
+    fetch('/expenses',{
+        method: 'POST',
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({amount,reason})
+
+    })
+    .then(response => {
+        if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();})
+    .then(data => {
+        console.log('Success',data)
+
+    })
+    .catch(err => {
+        console.error('error sending expense',err)
+    })
+    document.getElementById('amountInp').value = ''
+    document.getElementById('reasonInp').value = ''
+  }
