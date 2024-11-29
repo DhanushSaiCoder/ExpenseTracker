@@ -32,7 +32,7 @@
             Dashboard
           </button>
         </li>
-        
+
         <li>
           <button id="reportsBtn" onclick="openReports()" class="navBtns">
             Reports
@@ -77,31 +77,78 @@
                 </tr>
               </thead>
               <tbody id="tbody">
-                
-            
-            <td colspan="2"><button onclick="openAddExpense()" id="showMore">Show more...</button></td>
-                </tr>
-                
+                <td colspan="2">
+                  <button onclick="openAddExpense()" id="showMore">
+                    Show more...
+                  </button>
+                </td>
               </tbody>
             </table>
             <div id="newExpenseDiv">
               <h3>Add New Expense</h3>
-              <input min="0" class="newExpenseInp"id="amountInp" type="number" placeholder="Amount">
-              <input class="newExpenseInp" id="reasonInp" type="text" placeholder="Reason">
-              <button onclick="addExpense()" id="newExpenseBtn">Add Expense</button>
+              <input
+                min="0"
+                class="newExpenseInp"
+                id="amountInp"
+                type="number"
+                placeholder="Amount"
+              />
+              <input
+                class="newExpenseInp"
+                id="reasonInp"
+                type="text"
+                placeholder="Reason"
+              />
+              <button onclick="addExpense()" id="newExpenseBtn">
+                Add Expense
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <div id="addExpense">
-        <h2>Add Expense</h2>
-      </div>
-      <div id="latestExpenses">
-        <h2>Latest Expenses</h2>
-      </div>
-      
+
       <div id="reports">
-        <h2>Reports</h2>
+        <div id="reportsHeader">
+          <h2>Reports</h2>
+        </div>
+        <div id="reportsContent">
+          <table id="reportTable">
+            <thead>
+              <tr>
+                <th>Amount</th>
+                <th>Reason</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="reportTableBody">
+              <tr>
+                <td>123</td>
+                <td>asdf</td>
+                <td>12-22-22</td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td>asdf</td>
+                <td>12-22-22</td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td>asdf</td>
+                <td>12-22-22</td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td>asdf</td>
+                <td>12-22-22</td>
+              </tr>
+              <tr>
+                <td>123</td>
+                <td>asdf</td>
+                <td>12-22-22</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div id="profile">
         <h2>Profile</h2>

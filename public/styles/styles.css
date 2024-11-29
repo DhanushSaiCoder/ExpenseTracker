@@ -177,7 +177,7 @@ header h1 {
 #content > div {
   display: none;
 }
-#dashboard {
+#dashboard,#reports {
   padding: 20px 10px;
   /* border: 0.1px solid rgba(255, 255, 255, 0.091); */
   display: flex;
@@ -338,3 +338,37 @@ header h1 {
   padding: 10px 15px;
   opacity: 1;
 }
+#reportsContent{
+  border: 1px solid rgba(251, 250, 255, 0.195)
+}
+#reportTable {
+  width: 70vw;
+  border-radius: 10px;
+  border-collapse: collapse; /* Ensure proper spacing */
+}
+
+#reportTable thead {
+  background-color: rgba(136, 0, 255, 0.065);
+
+  height: 65px;
+  font-size: 20px;
+}
+
+#reportTable thead th {
+  text-align: left; /* Align header text to the left */
+  padding: 10px;
+  border-bottom: 1px solid var(--hoverColor);
+  color: #d3d3d3;
+
+}
+
+#reportTable tbody tr td {
+  padding: 10px; /* Use padding for spacing */
+  height: 30px;
+}
+
+#reportTable tbody tr:nth-child(even) {
+  background-color:rgba(255, 255, 255, 0.065) ; /* Alternating row colors for better readability */
+}
+
+

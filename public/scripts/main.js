@@ -1,3 +1,4 @@
+document.querySelector("#dashboardHeader h3").textContent = new Date().toLocaleDateString();
 
 function setActiveView(viewId) {
     const sections = document.querySelectorAll('#content > div');
