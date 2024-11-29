@@ -57,5 +57,19 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
+router.post('/signout', async (req, res) => {
+  try {
+    const { token } = req.body;
 
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const id = decoded.userId
+
+    const result = await User.findByIdAndDelete(id)
+
+    res.json({ message: "Signed out successfully" ,result});
+  } catch (error) {
+    console.error(error); // Log the actual error, not 'err'
+    res.status(500).json({ error: "Server error" });
+  }
+});
 module.exports = router;

@@ -4,7 +4,7 @@ window.onload = function () {
     setDefaultView();
 };
 
-if(!localStorage.getItem('token')) window.location.href = '/auth/login'
+if (!localStorage.getItem('token')) window.location.href = '/auth/login'
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
 }
@@ -15,10 +15,36 @@ function setActiveView(viewId) {
         section.style.display = section.id === viewId ? 'flex' : 'none';
     });
 }
-function logout(){
+function logout() {
     localStorage.removeItem('token')
     window.location.href = '/auth/login'
 }
+
+function signout() {
+    const token = localStorage.getItem('token');
+    localStorage.removeItem('token')
+    console.log(token);
+
+    fetch('/auth/signout', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            token: token
+        })
+    })
+        .then(response => {
+            if (!response.ok) throw new Error('Response not okay');
+            return response.json();
+        })
+        .then(data => console.log(data))
+        .catch(err => {
+            console.error('Error signing out:', err);
+        });
+        window.location.href='/auth/signup'
+}
+
 
 function setDefaultView() {
     document.getElementById('dashboardBtn').classList.add('active');
@@ -108,7 +134,7 @@ function addExpense() {
         });
 }
 
-  
+
 function displayReportTable(ex) {
     let bodyHtml = '';
     ex.reverse().forEach(item => {
