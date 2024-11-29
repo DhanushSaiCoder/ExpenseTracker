@@ -128,8 +128,14 @@ function formatDateToDDMMYYYY(date) {
     const year = d.getFullYear();
     return `${day}-${month}-${year}`;
 }
-
 function deleteExpense(id) {
+    const button = document.querySelector(`button[onclick="deleteExpense('${id}')"]`);
+    const originalText = button.textContent;
+
+    // Add loading spinner to the delete button
+    button.innerHTML = `<div class="spinner"></div>`;
+    button.disabled = true;
+
     fetch(`/expenses/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
@@ -138,9 +144,15 @@ function deleteExpense(id) {
             if (!response.ok) throw new Error('Network response was not ok');
             return response.json();
         })
-        .then(() => getExpensesFromDB())
-        .catch(err => console.error('Error sending expense:', err));
+        .then(() => getExpensesFromDB()) // Refresh the expense list
+        .catch(err => console.error('Error deleting expense:', err))
+        .finally(() => {
+            // Restore the button's original state
+            button.innerHTML = originalText;
+            button.disabled = false;
+        });
 }
+
 
 function editExpense(id) {
     // Show the popup
