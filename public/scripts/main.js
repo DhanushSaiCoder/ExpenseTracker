@@ -1,11 +1,11 @@
 window.onload = function () {
     document.querySelector("#dashboardHeader h3").textContent = formatDateToDDMMYYYY(new Date());
-
     getExpensesFromDB();
     setDefaultView();
 };
-function closePopup(){
-    document.getElementById('popup').style.display = 'none'
+
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
 }
 
 function setActiveView(viewId) {
@@ -28,10 +28,6 @@ function openReports() {
     setActiveViewWithButton('reportsBtn', 'reports');
 }
 
-function openProfile() {
-    setActiveViewWithButton('profileBtn', 'profile');
-}
-
 function setActiveViewWithButton(btnId, viewId) {
     document.querySelectorAll('.navBtns').forEach(btn => btn.classList.remove('active'));
     document.getElementById(btnId).classList.add('active');
@@ -46,7 +42,6 @@ function getExpensesFromDB() {
         })
         .then(data => displayExpenses(data))
         .catch(err => console.error('Error getting expenses:', err));
-
 }
 
 function displayExpenses(ex) {
@@ -63,6 +58,10 @@ function displayExpenses(ex) {
 function addExpense() {
     const amount = document.getElementById('amountInp').value;
     const reason = document.getElementById('reasonInp').value;
+    
+    // Debugging logs to ensure values are being captured correctly
+    console.log('Amount:', amount);
+    console.log('Reason:', reason);
 
     if (!amount || !reason) {
         alert('Please fill in all fields.');
@@ -78,12 +77,15 @@ function addExpense() {
             if (!response.ok) throw new Error('Network response was not ok');
             return response.json();
         })
-        .then(() => getExpensesFromDB())
+        .then(() => {
+            getExpensesFromDB(); // Refresh the expense list after adding
+            // Clear the input fields after successful submission
+            document.getElementById('amountInp').value = '';
+            document.getElementById('reasonInp').value = '';
+        })
         .catch(err => console.error('Error sending expense:', err));
-
-    document.getElementById('amountInp').value = '';
-    document.getElementById('reasonInp').value = '';
 }
+
 function displayReportTable(ex) {
     let bodyHtml = '';
     ex.reverse().forEach(item => {
@@ -92,15 +94,15 @@ function displayReportTable(ex) {
                         <td>${item.reason}</td>
                         <td>${formatDateToDDMMYYYY(item.date)}</td>
                         <td class="opColumn"><button class="editExpenseBtn" onclick="editExpense('${item._id}')">edit</button>    <button class="deleteExpenseBtn" onclick="deleteExpense('${item._id}')">delete</button></td>
-                    
-
                     </tr>`;
     });
     document.getElementById('reportTableBody').innerHTML = bodyHtml;
 }
+
 function editExpense(id) {
-    console.log(id)
+    console.log(id);
 }
+
 function formatDateToDDMMYYYY(date) {
     const d = new Date(date);
     const day = String(d.getDate()).padStart(2, '0'); // Ensures 2 digits for day
@@ -108,6 +110,7 @@ function formatDateToDDMMYYYY(date) {
     const year = d.getFullYear();
     return `${day}-${month}-${year}`;
 }
+
 function deleteExpense(id) {
     fetch(`/expenses/${id}`, {
         method: 'DELETE',
@@ -119,8 +122,8 @@ function deleteExpense(id) {
         })
         .then(() => getExpensesFromDB())
         .catch(err => console.error('Error sending expense:', err));
-
 }
+
 function editExpense(id) {
     // Show the popup
     popup.style.display = 'flex';
