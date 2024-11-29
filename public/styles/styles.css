@@ -12,6 +12,7 @@
   --hoverColor: rgba(255, 255, 255, 0.12);
   --activeColor: #ffd700;
   --secondaryColor: #ffd700;
+  --nonHoverColor: rgba(255, 255, 255, 0.065);
 }
 
 html,
@@ -153,24 +154,178 @@ header h1 {
 .active {
   opacity: 1;
   color: var(--secondaryColor);
-}.navBtns.active {
-    color: #FFD700; /* Gold color for active button text */
-    position: relative; /* To position the dot correctly */
+}
+.navBtns.active {
+  color: #ffd700; /* Gold color for active button text */
+  position: relative; /* To position the dot correctly */
 }
 
 .navBtns.active::before {
-    content: "•"; /* Unicode character for the dot */
-    font-size: 18px; /* Adjust size if needed */
-    margin-right: 8px; /* Space between dot and text */
-    color: #FFD700; /* Same color as the text */
-    position: absolute;
-    left: -12px; /* Position the dot to the left of the text */
-    top: 50%;
-    transform: translateY(-50%); /* Vertically center the dot */
+  content: "•"; /* Unicode character for the dot */
+  font-size: 18px; /* Adjust size if needed */
+  margin-right: 8px; /* Space between dot and text */
+  color: #ffd700; /* Same color as the text */
+  position: absolute;
+  left: -12px; /* Position the dot to the left of the text */
+  top: 50%;
+  transform: translateY(-50%); /* Vertically center the dot */
 }
 #content > div {
   display: none;
 }
 #dashboard {
-  display: block; /* Show dashboard by default */
+  padding: 20px 10px;
+  /* border: 0.1px solid rgba(255, 255, 255, 0.091); */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+#dashboardContent {
+  /* border: 0.1px solid rgba(255, 255, 255, 0.091); */
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  /* gap: 10px; */
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-right: 30%;
+  row-gap: 100px;
+}
+#dashboardStatsDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  /* border: 0.1px solid rgba(255, 0, 0, 0.091);
+   */
+  flex-wrap: wrap;
+}
+#weeksExpenseDiv,
+#monthsExpenseDiv,
+#daysExpenseDiv {
+  width: 250px;
+  height: 250px;
+  min-width: 250px;
+  min-height: 250px;
+  border: 0.1px solid var(--hoverColor);
+  background-color: var(--nonHoverColor);
+  border-radius: 6.5%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#weekExpenseHeader,
+#daysExpenseHeader,
+#monthsExpenseHeader {
+  opacity: 0.6;
+}
+#weekExpensesTxt,
+#daysExpensesTxt,
+#monthsExpenseTxt {
+  font-size: 40px;
+  opacity: 0.8;
+}
+#weekExpensesTxt {
+  color: rgb(255, 185, 56);
+}
+#monthsExpenseTxt {
+  color: rgb(255, 56, 30);
+}
+#daysExpensesTxt {
+  color: rgb(149, 255, 27);
+}
+#dashboardHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 12%;
+}
+#dashboardHeader h3 {
+  opacity: 0.6;
+}
+#dashboardExpenseTableDiv {
+  width: 100%;
+  /* border: 0.1px solid rgba(255, 255, 255, 0.091); */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+#dashboardExpenseTableDiv table {
+  -webkit-margin-collapse: collapse;
+  text-align: center;
+}
+#dashboardExpenseTableDiv table {
+  font-size: large;
+  opacity: 0.8;
+  width: 300px;
+  height: auto;
+}
+#dashboardExpenseTableDiv table tbody {
+  font-size: medium;
+  font-weight: 400;
+  opacity: 0.6;
+}
+#dashboardExpenseTableDiv table thead tr td {
+  border-bottom: 1px solid #ffffff33;
+}
+#dashboardExpenseTableDiv table tbody tr td {
+  padding: 10px 10px; /* Add spacing inside table cells */
+}
+#newExpenseDiv {
+  width: 500px;
+  padding: 20px 25px;
+  background-color: var(--nonHoverColor);
+  border-radius: 10px;
+  height: 300px;
+  border: 0.1px solid var(--hoverColor);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-direction: column;
+  
+  /* padding-bottom: 10%; */
+}
+#newExpenseDiv h4{
+  height: 20%;
+}
+#newExpenseBtn {
+  color: #0c0c0c;
+  width: 70%;
+  height: 40px;
+  border:  1px solid #d3d3d3;
+  background-color: none;
+  background: transparent;
+  border-radius: 10px;
+  color: #d3d3d3;
+
+}
+.newExpenseInp{
+  padding: 10px 25px;
+  border-radius: 10px;
+  border:none;
+  width: 70%;
+  height: 40px;
+  color: #0c0c0c;
+}
+#newExpenseBtn:hover,#showMore:hover{
+  background-color: var(--hoverColor);
+  cursor: pointer;
+}
+#showMore{
+  color: #0c0c0c;
+  width: auto;
+  border:  1px solid #d3d3d3;
+  background-color: none;
+  background: transparent;
+  border-radius: 10px;
+  color: #d3d3d3;
+  padding: 10px 15px;
 }

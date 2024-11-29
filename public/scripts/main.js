@@ -2,7 +2,7 @@ function setActiveView(viewId) {
     const sections = document.querySelectorAll('#content > div');
     sections.forEach(section => {
       if (section.id === viewId) {
-        section.style.display = 'block';
+        section.style.display = 'flex';
       } else {
         section.style.display = 'none';
       }

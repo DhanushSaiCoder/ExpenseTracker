@@ -24,29 +24,111 @@
     <nav class="sidebar">
       <ul>
         <li>
-          <button id="dashboardBtn" onclick="openDashboard()" class="navBtns active">Dashboard</button>
+          <button
+            id="dashboardBtn"
+            onclick="openDashboard()"
+            class="navBtns active"
+          >
+            Dashboard
+          </button>
         </li>
         <li>
-          <button id="addExpenseBtn" onclick="openAddExpense()" class="navBtns">Add Expense</button>
+          <button id="addExpenseBtn" onclick="openAddExpense()" class="navBtns">
+            Add Expense
+          </button>
         </li>
         <li>
-          <button id="latestExpensesBtn" onclick="openLatestExpenses()" class="navBtns">Latest Expenses</button>
+          <button
+            id="latestExpensesBtn"
+            onclick="openLatestExpenses()"
+            class="navBtns"
+          >
+            Latest Expenses
+          </button>
         </li>
         <li>
-          <button id="categoriesBtn" onclick="openCategories()" class="navBtns">Categories</button>
+          <button id="categoriesBtn" onclick="openCategories()" class="navBtns">
+            Categories
+          </button>
         </li>
         <li>
-          <button id="reportsBtn" onclick="openReports()" class="navBtns">Reports</button>
+          <button id="reportsBtn" onclick="openReports()" class="navBtns">
+            Reports
+          </button>
         </li>
         <li>
-          <button id="profileBtn" onclick="openProfile()" class="navBtns">Profile</button>
+          <button id="profileBtn" onclick="openProfile()" class="navBtns">
+            Profile
+          </button>
         </li>
       </ul>
     </nav>
 
     <div id="content">
       <div id="dashboard">
-        <h2>Dashboard</h2>
+        <div id="dashboardHeader">
+          <h2>Dashboard</h2>
+          <h3>29-11-2024</h3>
+        </div>
+        <div id="dashboardContent">
+          <div id="dashboardStatsDiv">
+            <div id="daysExpenseDiv">
+              <h3 id="daysExpenseHeader">Day Total Expenses</h3>
+              <h3 id="daysExpensesTxt">₹83/-</h3>
+            </div>
+            <div id="weeksExpenseDiv">
+              <h3 id="weekExpenseHeader">Week Total Expenses</h3>
+              <h3 id="weekExpensesTxt">₹358/-</h3>
+            </div>
+            <div id="monthsExpenseDiv">
+              <h3 id="monthsExpenseHeader">Month Total Expenses</h3>
+              <h3 id="monthsExpenseTxt">₹1083/-</h3>
+            </div>
+          </div>
+
+          <div id="dashboardExpenseTableDiv">
+            <table>
+              <thead>
+                <tr>
+                  <td>Amount</td>
+                  <td>Reason</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>125</td>
+                  <td>Spiral</td>
+                </tr>
+                <tr>
+                  <td>239</td>
+                  <td>Recharge</td>
+                </tr>
+                <tr>
+                  <td>60</td>
+                  <td>Books</td>
+                </tr>
+                <tr>
+                  <td>60</td>
+                  <td>Books</td>
+                </tr>
+                <tr>
+                  <td>60</td>
+                  <td>Books</td>
+                </tr>
+                <tr>
+                  <td colspan="2"><button id="showMore">Show more...</button></td>
+                </tr>
+                
+              </tbody>
+            </table>
+            <div id="newExpenseDiv">
+              <h4>Add New Expense</h4>
+              <input class="newExpenseInp" type="number" placeholder="Amount">
+              <input class="newExpenseInp" type="text" placeholder="Reason">
+              <button id="newExpenseBtn">Add Expense</button>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="addExpense">
         <h2>Add Expense</h2>
