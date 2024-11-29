@@ -152,13 +152,15 @@ function deleteExpense(id) {
             button.disabled = false;
         });
 }
-
-
 function editExpense(id) {
-    // Show the popup
-    popup.style.display = 'flex';
+    const button = document.querySelector(`button[onclick="editExpense('${id}')"]`);
+    const originalText = button.innerHTML;
 
-    // Get the current expense data (you can either fetch this data from the database or pass it with the expense object)
+    // Add loading spinner to the button
+    button.innerHTML = `<div class="spinner"></div>`;
+    button.disabled = true;
+
+    // Show the popup after fetching the data
     fetch(`/expenses/${id}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
@@ -176,16 +178,35 @@ function editExpense(id) {
             document.getElementById('submitEditBtn').onclick = function () {
                 updateExpense(id);
             };
-        })
-        .catch(err => console.error('Error getting expense data:', err));
-}
 
+            // Show the popup
+            popup.style.display = 'flex';
+        })
+        .catch(err => {
+            console.error('Error getting expense data:', err);
+            alert('Failed to fetch expense data.');
+        })
+        .finally(() => {
+            // Restore the button's original state
+            button.innerHTML = originalText;
+            button.disabled = false;
+        });
+}
 function updateExpense(id) {
+    const button = document.getElementById('submitEditBtn');
+    const originalText = button.innerHTML;
+
+    // Add spinner to the button
+    button.innerHTML = `<div class="spinner"></div> Saving...`;
+    button.disabled = true;
+
     const amount = document.getElementById('amountInpPopup').value;
     const reason = document.getElementById('reasonInpPopup').value;
 
     if (!amount || !reason) {
         alert('Please fill in all fields.');
+        button.innerHTML = originalText; // Restore the button
+        button.disabled = false;
         return;
     }
 
@@ -202,5 +223,13 @@ function updateExpense(id) {
             getExpensesFromDB(); // Refresh the expense list
             popup.style.display = 'none'; // Close the popup after updating
         })
-        .catch(err => console.error('Error updating expense:', err));
+        .catch(err => {
+            console.error('Error updating expense:', err);
+            alert('Failed to update expense. Please try again.');
+        })
+        .finally(() => {
+            // Restore the button state
+            button.innerHTML = originalText;
+            button.disabled = false;
+        });
 }
