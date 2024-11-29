@@ -54,17 +54,28 @@ function displayExpenses(ex) {
     document.getElementById('tbody').innerHTML = tbody;
     displayReportTable(ex);
 }
-
 function addExpense() {
+    const button = document.getElementById('newExpenseBtn');
+    const buttonText = button.querySelector('.button-text');
+    const spinner = button.querySelector('.spinner');
+
+    // Show loading animation
+    buttonText.classList.add('hidden');
+    spinner.classList.remove('hidden');
+    button.disabled = true;
+
     const amount = document.getElementById('amountInp').value;
     const reason = document.getElementById('reasonInp').value;
-    
-    // Debugging logs to ensure values are being captured correctly
+
+    // Debugging logs
     console.log('Amount:', amount);
     console.log('Reason:', reason);
 
     if (!amount || !reason) {
         alert('Please fill in all fields.');
+        buttonText.classList.remove('hidden');
+        spinner.classList.add('hidden');
+        button.disabled = false;
         return;
     }
 
@@ -83,9 +94,16 @@ function addExpense() {
             document.getElementById('amountInp').value = '';
             document.getElementById('reasonInp').value = '';
         })
-        .catch(err => console.error('Error sending expense:', err));
+        .catch(err => console.error('Error sending expense:', err))
+        .finally(() => {
+            // Restore button state
+            buttonText.classList.remove('hidden');
+            spinner.classList.add('hidden');
+            button.disabled = false;
+        });
 }
 
+  
 function displayReportTable(ex) {
     let bodyHtml = '';
     ex.reverse().forEach(item => {
