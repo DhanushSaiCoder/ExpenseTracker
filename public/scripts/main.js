@@ -80,14 +80,18 @@ function addExpense() {
     document.getElementById('amountInp').value = '';
     document.getElementById('reasonInp').value = '';
 }
-
 function displayReportTable(ex) {
     let bodyHtml = '';
-    ex.forEach(item => {
-        bodyHtml += `<tr class="reportRow"><td>${item.amount}</td><td>${item.reason}</td><td>${formatDateToDDMMYYYY(item.date)}</td></tr>`;
+    ex.reverse().forEach(item => {
+        bodyHtml += `<tr class="reportRow">
+                        <td>${item.amount}</td>
+                        <td>${item.reason}</td>
+                        <td>${formatDateToDDMMYYYY(item.date)}</td>
+                    </tr>`;
     });
     document.getElementById('reportTableBody').innerHTML = bodyHtml;
 }
+
 function formatDateToDDMMYYYY(date) {
     const d = new Date(date);
     const day = String(d.getDate()).padStart(2, '0'); // Ensures 2 digits for day
