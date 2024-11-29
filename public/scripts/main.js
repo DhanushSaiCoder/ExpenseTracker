@@ -3,7 +3,7 @@ window.onload = function () {
     getExpensesFromDB();
     setDefaultView();
 };
-
+if(!localStorage.getItem('token')) window.location.href = '/auth/login'
 function closePopup() {
     document.getElementById('popup').style.display = 'none';
 }
