@@ -74,7 +74,7 @@
           <div id="dashboardStatsDiv">
             <div id="daysExpenseDiv">
               <h3 id="daysExpenseHeader">Day Total Expenses</h3>
-              <h3 id="daysExpensesTxt">₹83/-</h3>
+              <h3 id="daysExpensesTxt">₹63/-</h3>
             </div>
             <div id="weeksExpenseDiv">
               <h3 id="weekExpenseHeader">Week Total Expenses</h3>
@@ -116,14 +116,15 @@
                   <td>Books</td>
                 </tr>
                 <tr>
-                  <td colspan="2"><button id="showMore">Show more...</button></td>
+            
+            <td colspan="2"><button onclick="openLatestExpenses()" id="showMore">Show more...</button></td>
                 </tr>
                 
               </tbody>
             </table>
             <div id="newExpenseDiv">
-              <h4>Add New Expense</h4>
-              <input class="newExpenseInp" type="number" placeholder="Amount">
+              <h3>Add New Expense</h3>
+              <input min="0" class="newExpenseInp" type="number" placeholder="Amount">
               <input class="newExpenseInp" type="text" placeholder="Reason">
               <button id="newExpenseBtn">Add Expense</button>
             </div>
