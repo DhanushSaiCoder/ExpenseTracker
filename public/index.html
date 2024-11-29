@@ -13,6 +13,18 @@
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <button onclick="closePopup()" id="closePopupBtn" class="close-btn"><span >&times;</span></button>
+        <h2>Edit Expense</h2>
+        <label for="amountInp">Amount:</label>
+        <input type="number" id="amountInp" placeholder="Enter amount" />
+        <label for="reasonInp">Reason:</label>
+        <input type="text" id="reasonInp" placeholder="Enter reason" />
+        <button id="submitEditBtn">Save Changes</button>
+      </div>
+    </div>
+
     <header>
       <h1>Expense Tracker</h1>
 
@@ -38,7 +50,6 @@
             Reports
           </button>
         </li>
-       
       </ul>
     </nav>
 
@@ -117,9 +128,7 @@
                 <th class="opColumn"></th>
               </tr>
             </thead>
-            <tbody id="reportTableBody">
-              
-            </tbody>
+            <tbody id="reportTableBody"></tbody>
           </table>
         </div>
       </div>

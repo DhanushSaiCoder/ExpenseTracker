@@ -74,7 +74,6 @@ header h1 {
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1012);
   box-shadow: 0px 7px 17px rgba(0, 0, 0, 0.281);
-
 }
 
 #logOutBtn {
@@ -177,7 +176,8 @@ header h1 {
 #content > div {
   display: none;
 }
-#dashboard,#reports {
+#dashboard,
+#reports {
   padding: 20px 10px;
   /* border: 0.1px solid rgba(255, 255, 255, 0.091); */
   display: flex;
@@ -223,7 +223,6 @@ header h1 {
   justify-content: center;
   flex-direction: column;
   box-shadow: 07px 7px 17px rgba(0, 0, 0, 0.281);
-
 }
 #weekExpenseHeader,
 #daysExpenseHeader,
@@ -272,7 +271,6 @@ header h1 {
   /* opacity: 0.8; */
   width: 300px;
   height: auto;
-  
 }
 #dashboardExpenseTableDiv table tbody {
   font-size: medium;
@@ -301,36 +299,36 @@ header h1 {
 
   /* padding-bottom: 10%; */
 }
-#newExpenseDiv h3{
+#newExpenseDiv h3 {
   height: 20%;
 }
 #newExpenseBtn {
   color: #0c0c0c;
   width: 70%;
   height: 40px;
-  border:  1px solid #d3d3d3;
+  border: 1px solid #d3d3d3;
   background-color: none;
   background: transparent;
   border-radius: 10px;
   color: #d3d3d3;
-
 }
-.newExpenseInp{
+.newExpenseInp {
   padding: 10px 25px;
   border-radius: 10px;
-  border:none;
+  border: none;
   width: 70%;
   height: 40px;
   color: #0c0c0c;
 }
-#newExpenseBtn:hover,#showMore:hover{
+#newExpenseBtn:hover,
+#showMore:hover {
   background-color: var(--hoverColor);
   cursor: pointer;
 }
-#showMore{
+#showMore {
   color: #0c0c0c;
   width: auto;
-  border:  1px solid #d3d3d3;
+  border: 1px solid #d3d3d3;
   background-color: none;
   background: transparent;
   border-radius: 10px;
@@ -338,15 +336,14 @@ header h1 {
   padding: 10px 15px;
   opacity: 1;
 }
-#reportsContent{
-  border: 1px solid rgba(251, 250, 255, 0.195)
+#reportsContent {
+  border: 1px solid rgba(251, 250, 255, 0.195);
 }
 #reportTable {
   width: 70vw;
   border-radius: 10px;
   border-collapse: collapse; /* Ensure proper spacing */
   box-shadow: 07px 7px 17px rgba(0, 0, 0, 0.281);
-
 }
 
 #reportTable thead {
@@ -361,7 +358,6 @@ header h1 {
   padding: 10px;
   border-bottom: 1px solid var(--hoverColor);
   color: #d3d3d3;
-
 }
 
 #reportTable tbody tr td {
@@ -371,26 +367,84 @@ header h1 {
 }
 
 #reportTable tbody tr:nth-child(even) {
-  background-color:rgba(255, 255, 255, 0.065) ; /* Alternating row colors for better readability */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.065
+  ); /* Alternating row colors for better readability */
 }
 
-.editExpenseBtn,.deleteExpenseBtn{
+.editExpenseBtn,
+.deleteExpenseBtn {
   width: 70px;
   padding: 5px 10px;
   background: transparent;
   border: 1px solid #d3d3d3;
   border-radius: 5px;
-  margin:5px;
+  margin: 5px;
 }
-.deleteExpenseBtn{
+.deleteExpenseBtn {
   border: 1px solid #ff2a31;
-  color:#ff8084 ;
-
+  color: #ff8084;
 }
-.editExpenseBtn:hover,.deleteExpenseBtn:hover{
+.editExpenseBtn:hover,
+.deleteExpenseBtn:hover {
   background-color: var(--hoverColor);
   cursor: pointer;
 }
-.opColumn{
+.opColumn {
   width: 200px;
+}
+/* The Popup */
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent background */
+  justify-content: center;
+  align-items: center;
+  color: #0c0c0c;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1012);
+  z-index: 55;
+}
+
+/* Popup Content */
+.popup-content {
+  background-color: white;
+  color: #0c0c0c;
+  padding: 20px 30px;
+  border-radius: 15px;
+  width: 30%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 50%;
+  position: relative;
+}
+
+.popup-content *{
+  color: #0c0c0c;
+}
+/* Close Button */
+.close-btn,#closePopupBtn {
+  color: #0c0c0c;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  background-color: none;
+  background: transparent;
+  font-size: 40px;
+  padding: 5px 10px;
+  border: none;
 }

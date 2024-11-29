@@ -5,6 +5,31 @@ window.onload = function () {
     setDefaultView();
 };
 
+// Get the popup element
+const popup = document.getElementById('popup');
+// Get the button that opens the popup
+const openPopupBtn = document.getElementById('editExpenseBtn');
+// Get the <span> element that closes the popup
+const closePopupBtn = document.getElementById('closePopupBtn');
+
+// When the user clicks the button, open the popup
+openPopupBtn.onclick = function () {
+    popup.style.display = 'flex'; // Show the popup
+}
+
+function closePopup() {
+    popup.style.display = 'none';
+}
+
+
+// When the user clicks anywhere outside the popup, close it
+window.onclick = function (event) {
+    if (event.target === popup) {
+        popup.style.display = 'none';
+    }
+}
+
+
 function setActiveView(viewId) {
     const sections = document.querySelectorAll('#content > div');
     sections.forEach(section => {
@@ -43,7 +68,7 @@ function getExpensesFromDB() {
         })
         .then(data => displayExpenses(data))
         .catch(err => console.error('Error getting expenses:', err));
-        
+
 }
 
 function displayExpenses(ex) {
@@ -95,7 +120,7 @@ function displayReportTable(ex) {
     });
     document.getElementById('reportTableBody').innerHTML = bodyHtml;
 }
-function editExpense(id){
+function editExpense(id) {
     console.log(id)
 }
 function formatDateToDDMMYYYY(date) {
@@ -105,7 +130,7 @@ function formatDateToDDMMYYYY(date) {
     const year = d.getFullYear();
     return `${day}-${month}-${year}`;
 }
-function deleteExpense(id){
+function deleteExpense(id) {
     fetch(`/expenses/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }
@@ -117,4 +142,54 @@ function deleteExpense(id){
         .then(() => getExpensesFromDB())
         .catch(err => console.error('Error sending expense:', err));
 
+}
+function editExpense(id) {
+    // Show the popup
+    popup.style.display = 'flex';
+
+    // Get the current expense data (you can either fetch this data from the database or pass it with the expense object)
+    fetch(`/expenses/${id}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    })
+        .then(response => {
+            if (!response.ok) throw new Error('Error fetching expense data');
+            return response.json();
+        })
+        .then(data => {
+            // Populate the input fields in the popup with the expense data
+            document.getElementById('amountInp').value = data.amount;
+            document.getElementById('reasonInp').value = data.reason;
+
+            // Store the ID on the submit button so we can reference it when the form is submitted
+            document.getElementById('submitEditBtn').onclick = function () {
+                updateExpense(id);
+            };
+        })
+        .catch(err => console.error('Error getting expense data:', err));
+}
+
+function updateExpense(id) {
+    const amount = document.getElementById('amountInp').value;
+    const reason = document.getElementById('reasonInp').value;
+
+    if (!amount || !reason) {
+        alert('Please fill in all fields.');
+        return;
+    }
+
+    fetch(`/expenses/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount, reason }),
+    })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(() => {
+            getExpensesFromDB(); // Refresh the expense list
+            popup.style.display = 'none'; // Close the popup after updating
+        })
+        .catch(err => console.error('Error updating expense:', err));
 }
