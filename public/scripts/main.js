@@ -4,31 +4,9 @@ window.onload = function () {
     getExpensesFromDB();
     setDefaultView();
 };
-
-// Get the popup element
-const popup = document.getElementById('popup');
-// Get the button that opens the popup
-const openPopupBtn = document.getElementById('editExpenseBtn');
-// Get the <span> element that closes the popup
-const closePopupBtn = document.getElementById('closePopupBtn');
-
-// When the user clicks the button, open the popup
-openPopupBtn.onclick = function () {
-    popup.style.display = 'flex'; // Show the popup
+function closePopup(){
+    document.getElementById('popup').style.display = 'none'
 }
-
-function closePopup() {
-    popup.style.display = 'none';
-}
-
-
-// When the user clicks anywhere outside the popup, close it
-window.onclick = function (event) {
-    if (event.target === popup) {
-        popup.style.display = 'none';
-    }
-}
-
 
 function setActiveView(viewId) {
     const sections = document.querySelectorAll('#content > div');
