@@ -87,11 +87,16 @@ function displayReportTable(ex) {
                         <td>${item.amount}</td>
                         <td>${item.reason}</td>
                         <td>${formatDateToDDMMYYYY(item.date)}</td>
+                        <td class="opColumn"><button class="editExpenseBtn" onclick="editExpense('${item._id}')">edit</button>    <button class="deleteExpenseBtn" onclick="deleteExpense('${item._id}')">delete</button></td>
+                    
+
                     </tr>`;
     });
     document.getElementById('reportTableBody').innerHTML = bodyHtml;
 }
-
+function editExpense(id){
+    console.log(id)
+}
 function formatDateToDDMMYYYY(date) {
     const d = new Date(date);
     const day = String(d.getDate()).padStart(2, '0'); // Ensures 2 digits for day

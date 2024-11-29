@@ -374,3 +374,22 @@ header h1 {
   background-color:rgba(255, 255, 255, 0.065) ; /* Alternating row colors for better readability */
 }
 
+.editExpenseBtn,.deleteExpenseBtn{
+  width: auto;
+  padding: 5px 10px;
+  background: transparent;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+}
+.deleteExpenseBtn{
+  border: 1px solid #ff2a31;
+  color:#ff8084 ;
+
+}
+.editExpenseBtn:hover,.deleteExpenseBtn:hover{
+  background-color: var(--hoverColor);
+  cursor: pointer;
+}
+.opColumn{
+  width: 180px;
+}
