@@ -101,7 +101,6 @@ function getExpensesFromDB() {
 getExpensesFromDB()
 function displayExpenses(ex) {
     console.log(ex);
-  
     let inner = ''; // Start with an empty string
     let k = 0; // Counter for limiting to 5 expenses
   
@@ -114,7 +113,7 @@ function displayExpenses(ex) {
       inner += html; // Append the new row
       k++;
     }
-    inner +=`<td colspan="2"><button onclick="openAddExpense()" id="showMore">Show more...</button></td>
+    inner +=`<td colspan="2"><button onclick="openReports()" id="showMore">Show more...</button></td>
                 </tr>`
   
     console.log(inner);
@@ -133,7 +132,7 @@ function addExpense() {
         },
         body: JSON.stringify({ amount, reason })
 
-    })
+    })  
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
