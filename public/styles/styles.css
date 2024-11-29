@@ -416,23 +416,33 @@ header h1 {
 
 /* Popup Content */
 .popup-content {
-  background-color: white;
+  background-color: #dcf1ff;
   color: #0c0c0c;
-  padding: 20px 30px;
+  padding: 2% 6%;
   border-radius: 15px;
-  width: 30%;
+  width: auto;
   text-align: center;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-evenly;
   flex-direction: column;
   flex-wrap: wrap;
   height: 50%;
   position: relative;
+  text-align: left;
 }
 
 .popup-content *{
   color: #0c0c0c;
+}
+.popup-content h2{
+  font-size: 40px;
+}
+.popupInp{
+  width: 60%;
+  padding:10px 20px;
+  border:2px double #0c0c0c;
+  border-radius: 10px;
 }
 /* Close Button */
 .close-btn,#closePopupBtn {
@@ -447,4 +457,16 @@ header h1 {
   font-size: 40px;
   padding: 5px 10px;
   border: none;
+}
+#submitEditBtn{
+  width: 60%;
+  padding:10px 20px;
+  border:2px double #0c0c0c;
+  border-radius: 10px;
+  background-color: #0c0c0cea;
+  color: #d3d3d3;
+}
+#submitEditBtn:hover{
+  background-color: #0c0c0c;
+  cursor: pointer;
 }
