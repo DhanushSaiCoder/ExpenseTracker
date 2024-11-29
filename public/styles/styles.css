@@ -365,6 +365,7 @@ header h1 {
 #reportTable tbody tr td {
   padding: 10px; /* Use padding for spacing */
   height: 30px;
+  color: #d3d3d3c6;
 }
 
 #reportTable tbody tr:nth-child(even) {
