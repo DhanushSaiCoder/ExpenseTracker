@@ -1,5 +1,6 @@
 window.onload = function () {
-    document.querySelector("#dashboardHeader h3").textContent = new Date().toLocaleDateString();
+    document.querySelector("#dashboardHeader h3").textContent = formatDateToDDMMYYYY(new Date());
+
     getExpensesFromDB();
     setDefaultView();
 };
@@ -50,7 +51,7 @@ function displayExpenses(ex) {
     for (let i = ex.length - 1; i >= 0 && k < 5; i--, k++) {
         tbody += `<tr><td>${ex[i].amount}</td><td>${ex[i].reason}</td></tr>`;
     }
-    tbody += `<tr><td colspan="2"><button onclick="openReports()">Show more...</button></td></tr>`;
+    tbody += `<tr><td colspan="2"><button id="showMore" onclick="openReports()">Show more...</button></td></tr>`;
     document.getElementById('tbody').innerHTML = tbody;
     displayReportTable(ex);
 }
@@ -83,7 +84,7 @@ function addExpense() {
 function displayReportTable(ex) {
     let bodyHtml = '';
     ex.forEach(item => {
-        bodyHtml += `<tr><td>${item.amount}</td><td>${item.reason}</td><td>${formatDateToDDMMYYYY(item.date)}</td></tr>`;
+        bodyHtml += `<tr class="reportRow"><td>${item.amount}</td><td>${item.reason}</td><td>${formatDateToDDMMYYYY(item.date)}</td></tr>`;
     });
     document.getElementById('reportTableBody').innerHTML = bodyHtml;
 }
@@ -94,4 +95,3 @@ function formatDateToDDMMYYYY(date) {
     const year = d.getFullYear();
     return `${day}-${month}-${year}`;
 }
-document.querySelector("#dashboardHeader h3").textContent = formatDateToDDMMYYYY(new Date());
