@@ -3,9 +3,17 @@ content-type: application/json
 
 {
     "amount": 125,
-    "reason": "WT - spiral"
-
-
-
-    
+    "reason": "WT - spiral"    
 }
+
+###
+POST   http://localhost:3000/auth/signup
+content-type: application/json
+
+{
+    "username": "dhanush",
+    "email": "dhanushsai1467@gmail.com",
+    "password":"Dhanush@2007"
+}
+
+###
