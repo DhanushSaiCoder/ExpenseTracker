@@ -43,6 +43,7 @@ function getExpensesFromDB() {
         })
         .then(data => displayExpenses(data))
         .catch(err => console.error('Error getting expenses:', err));
+        
 }
 
 function displayExpenses(ex) {
@@ -103,4 +104,17 @@ function formatDateToDDMMYYYY(date) {
     const month = String(d.getMonth() + 1).padStart(2, '0'); // Months are zero-based
     const year = d.getFullYear();
     return `${day}-${month}-${year}`;
+}
+function deleteExpense(id){
+    fetch(`/expenses/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(() => getExpensesFromDB())
+        .catch(err => console.error('Error sending expense:', err));
+
 }
