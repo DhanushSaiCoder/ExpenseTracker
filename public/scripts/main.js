@@ -139,8 +139,8 @@ function editExpense(id) {
         })
         .then(data => {
             // Populate the input fields in the popup with the expense data
-            document.getElementById('amountInp').value = data.amount;
-            document.getElementById('reasonInp').value = data.reason;
+            document.getElementById('amountInpPopup').value = data.amount;
+            document.getElementById('reasonInpPopup').value = data.reason;
 
             // Store the ID on the submit button so we can reference it when the form is submitted
             document.getElementById('submitEditBtn').onclick = function () {
@@ -151,8 +151,8 @@ function editExpense(id) {
 }
 
 function updateExpense(id) {
-    const amount = document.getElementById('amountInp').value;
-    const reason = document.getElementById('reasonInp').value;
+    const amount = document.getElementById('amountInpPopup').value;
+    const reason = document.getElementById('reasonInpPopup').value;
 
     if (!amount || !reason) {
         alert('Please fill in all fields.');
