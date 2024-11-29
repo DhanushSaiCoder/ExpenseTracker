@@ -375,11 +375,12 @@ header h1 {
 }
 
 .editExpenseBtn,.deleteExpenseBtn{
-  width: auto;
+  width: 70px;
   padding: 5px 10px;
   background: transparent;
   border: 1px solid #d3d3d3;
   border-radius: 5px;
+  margin:5px;
 }
 .deleteExpenseBtn{
   border: 1px solid #ff2a31;
@@ -391,5 +392,5 @@ header h1 {
   cursor: pointer;
 }
 .opColumn{
-  width: 180px;
+  width: 200px;
 }
