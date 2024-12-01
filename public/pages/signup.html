@@ -69,6 +69,8 @@
       /* Style the button */
       button {
         width: 100%;
+        height: auto;
+        min-height: 50px;
         padding: 10px;
         background-color: #ffdd20;
         color: rgb(32, 29, 0);
@@ -76,10 +78,39 @@
         border-radius: 4px;
         font-size: 16px;
         cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       button:hover {
         background-color: #ffe23f;
+      }
+
+      /* Spinner styles */
+      .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        border: 3px solid #fff;
+        border-top: 3px solid black; /* Black spinner */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        display: none;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
 
       /* Style the feedback message */
@@ -133,7 +164,10 @@
           <input type="password" id="password" required />
         </div>
         <div class="feedback" id="feedback"></div>
-        <button id="signUpBtn" type="submit">Sign Up</button>
+        <button id="signUpBtn" type="submit">
+          <span id="buttonText">Sign Up</span>
+          <div class="spinner" id="spinner"></div>
+        </button>
       </form>
       <div class="login-link">
         <p>Already have an account? <a href="/auth/login">Login</a></p>
@@ -143,6 +177,9 @@
     <script>
       const form = document.getElementById("signupForm");
       const feedback = document.getElementById("feedback");
+      const button = document.getElementById("signUpBtn");
+      const buttonText = document.getElementById("buttonText");
+      const spinner = document.getElementById("spinner");
 
       form.onsubmit = async (event) => {
         event.preventDefault();
@@ -152,8 +189,9 @@
         const password = document.getElementById("password").value.trim();
 
         feedback.style.display = "none"; // Hide feedback by default
-        const button = document.getElementById("signUpBtn");
         button.classList.add("loading");
+        buttonText.style.display = "none"; // Hide text while loading
+        spinner.style.display = "block"; // Show spinner
 
         // Simple validation
         if (!username) {
@@ -202,7 +240,6 @@
         feedback.textContent = message;
         feedback.style.display = "block";
         feedback.className = type;
-        feedback.classList.add = type
       }
     </script>
   </body>
