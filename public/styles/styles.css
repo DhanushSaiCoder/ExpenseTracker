@@ -200,12 +200,13 @@ header h1 {
 }
 #dashboardStatsDiv {
   width: 100%;
+
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  /* border: 0.1px solid rgba(255, 0, 0, 0.091);
-   */
+  justify-content: flex-start;
+  border: 0.1px solid rgba(255, 0, 0, 0.091);
   flex-wrap: wrap;
+  gap: 40px;
 }
 #weeksExpenseDiv,
 #monthsExpenseDiv,
