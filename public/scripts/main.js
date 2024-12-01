@@ -160,6 +160,13 @@ function displayReportTable(ex) {
         document.getElementById('reportTable').style.display = 'none'
         const noData = document.getElementById('noData')
         noData.innerText = 'No expenses yet!'
+        return;
+    }
+    else{
+        document.getElementById('reportTable').style.display = 'block'
+        const noData = document.getElementById('noData')
+        noData.innerText = ''
+        
     }
     let bodyHtml = '';
     ex.reverse().forEach(item => {
