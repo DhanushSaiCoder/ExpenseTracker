@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const path = require('path');
 const router = express.Router();
+const { Expense, validateExpense } = require("../models/Expense");
 
 router.get('/signup', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/pages/signup.html'));
@@ -63,13 +64,23 @@ router.post('/signout', async (req, res) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const id = decoded.userId
-
+    deleteUsersExpenses(id)
     const result = await User.findByIdAndDelete(id)
 
-    res.json({ message: "Signed out successfully" ,result});
+    res.json({ message: "Signed out successfully", result });
   } catch (error) {
     console.error(error); // Log the actual error, not 'err'
     res.status(500).json({ error: "Server error" });
   }
 });
+async function deleteUsersExpenses(uid) {
+  try {
+    const expenses = await Expense.find({ user: uid });
+    for (const ex of expenses) {
+      await Expense.findByIdAndDelete(ex._id);
+    }
+  } catch (error) {
+    console.error("Error deleting user's expenses:", error);
+  }
+}
 module.exports = router;

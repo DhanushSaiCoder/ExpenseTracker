@@ -104,6 +104,7 @@
   </div>
 
   <script>
+    if(localStorage.getItem('token'))  window.location.href = '/'
     function login(event) {
       event.preventDefault();  // Prevent form submission
 
