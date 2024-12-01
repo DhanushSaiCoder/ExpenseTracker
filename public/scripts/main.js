@@ -74,22 +74,24 @@ function getExpensesFromDB() {
             if (!response.ok) throw new Error('response not okay');
             return response.json();
         })
-        .then(data => displayExpenses(data))
+        .then(data => displayReportTable(data))
         .catch(err => console.error('Error getting expenses:', err));
 
         
 }
 
-function displayExpenses(ex) {
-    let tbody = '';
-    let k = 0;
-    for (let i = ex.length - 1; i >= 0 && k < 5; i--, k++) {
-        tbody += `<tr><td>${ex[i].amount}</td><td>${ex[i].reason}</td></tr>`;
-    }
-    tbody += `<tr><td colspan="2"><button id="showMore" onclick="openReports()">Show Report</button></td></tr>`;
-    document.getElementById('tbody').innerHTML = tbody;
-    displayReportTable(ex);
-}function addExpense() {
+// function displayExpenses(ex) {
+//     let tbody = '';
+//     let k = 0;
+//     for (let i = ex.length - 1; i >= 0 && k < 5; i--, k++) {
+//         tbody += `<tr><td>${ex[i].amount}</td><td>${ex[i].reason}</td></tr>`;
+//     }
+//     tbody += `<tr><td colspan="2"><button id="showMore" onclick="openReports()">Show Report</button></td></tr>`;
+//     document.getElementById('tbody').innerHTML = tbody;
+//     displayReportTable(ex);
+// }
+
+function addExpense() {
     const button = document.getElementById('newExpenseBtn');
     const buttonText = button.querySelector('.button-text');
     const spinner = button.querySelector('.spinner');
@@ -149,7 +151,7 @@ function displayReportTable(ex) {
     let bodyHtml = '';
     ex.reverse().forEach(item => {
         bodyHtml += `<tr class="reportRow">
-                        <td>${item.amount}</td>
+                        <td class="amountColumn">${item.amount}</td>
                         <td>${item.reason}</td>
                         <td>${formatDateToDDMMYYYY(item.date)}</td>
                         <td class="opColumn"><button class="editExpenseBtn" onclick="editExpense('${item._id}')">edit</button>    <button class="deleteExpenseBtn" onclick="deleteExpense('${item._id}')">delete</button></td>

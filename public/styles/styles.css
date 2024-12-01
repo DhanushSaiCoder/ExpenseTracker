@@ -256,8 +256,8 @@ header h1 {
   width: 100%;
   /* border: 0.1px solid rgba(255, 255, 255, 0.091); */
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 #dashboardExpenseTableDiv table {
@@ -294,6 +294,7 @@ header h1 {
   flex-wrap: wrap;
   flex-direction: column;
   box-shadow: 07px 7px 17px rgba(0, 0, 0, 0.281);
+  font-size: medium;
 
   /* padding-bottom: 10%; */
 }
@@ -508,6 +509,9 @@ header h1 {
   display: none;
 }
 
+#reportTableBody .reportRow .amountColumn{
+  color: var(--secondaryColor);
+}
 /* mobile  */
 
 @media (max-width: 600px) {
@@ -617,7 +621,6 @@ header h1 {
       font-size: 16px;
     }
     #reports{
-      border: 1px solid red;
       align-items: center;
     }
     #reportTable{
@@ -630,6 +633,8 @@ header h1 {
     .opColumn{
       text-align:right;
     }
-
+    #dashboardTable{
+      display: none;
+    }
     
   }
