@@ -86,8 +86,7 @@ function displayExpenses(ex) {
     tbody += `<tr><td colspan="2"><button id="showMore" onclick="openReports()">Show Report</button></td></tr>`;
     document.getElementById('tbody').innerHTML = tbody;
     displayReportTable(ex);
-}
-function addExpense() {
+}function addExpense() {
     const button = document.getElementById('newExpenseBtn');
     const buttonText = button.querySelector('.button-text');
     const spinner = button.querySelector('.spinner');
@@ -99,12 +98,14 @@ function addExpense() {
 
     const amount = document.getElementById('amountInp').value;
     const reason = document.getElementById('reasonInp').value;
+    const token = localStorage.getItem('token'); // Retrieve token from localStorage
 
     // Debugging logs
+    console.log('Token:', token);
     console.log('Amount:', amount);
     console.log('Reason:', reason);
 
-    if (!amount || !reason) {
+    if (!amount || !reason || !token) {
         alert('Please fill in all fields.');
         buttonText.classList.remove('hidden');
         spinner.classList.add('hidden');
@@ -115,7 +116,7 @@ function addExpense() {
     fetch('/expenses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount, reason }),
+        body: JSON.stringify({ amount, reason, token }),
     })
         .then(response => {
             if (!response.ok) throw new Error('Network response was not ok');
@@ -134,8 +135,11 @@ function addExpense() {
             spinner.classList.add('hidden');
             button.disabled = false;
         });
-        refreshStats()
+
+    refreshStats();
 }
+
+
 
 
 function displayReportTable(ex) {
