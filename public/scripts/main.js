@@ -10,12 +10,6 @@ function closePopup() {
     document.getElementById('popup').style.display = 'none';
 }
 
-function setActiveView(viewId) {
-    const sections = document.querySelectorAll('#content > div');
-    sections.forEach(section => {
-        section.style.display = section.id === viewId ? 'flex' : 'none';
-    });
-}
 function logout() {
     localStorage.removeItem('token')
     window.location.href = '/auth/login'
@@ -25,7 +19,7 @@ function signout() {
     const token = localStorage.getItem('token');
     localStorage.removeItem('token')
     console.log(token);
-
+    
     fetch('/auth/signout', {
         method: 'POST',
         headers: {
@@ -35,42 +29,55 @@ function signout() {
             token: token
         })
     })
-        .then(response => {
-            if (!response.ok) throw new Error('Response not okay');
-            return response.json();
-        })
-        .then(data => console.log(data))
-        .catch(err => {
-            console.error('Error signing out:', err);
-        });
-        window.location.href='/auth/signup'
+    .then(response => {
+        if (!response.ok) throw new Error('Response not okay');
+        return response.json();
+    })
+    .then(data => console.log(data))
+    .catch(err => {
+        console.error('Error signing out:', err);
+    });
+    window.location.href='/auth/signup'
 }
 
+function clearActiveClasses() {
+    document.querySelectorAll('.navBtns').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.navBtns2').forEach(btn => btn.classList.remove('active2'));
+}
+
+function setActiveView(viewId) {
+    document.querySelectorAll('#content > div').forEach(section => {
+        section.style.display = section.id === viewId ? 'flex' : 'none';
+    });
+}
+
+function setActiveViewWithButton(btnId, viewId) {
+    clearActiveClasses();
+    document.getElementById(btnId)?.classList.add('active');
+    setActiveView(viewId);
+}
 
 function setDefaultView() {
-    document.getElementById('dashboardBtn').classList.add('active');
     setActiveView('dashboard');
+    document.getElementById('dashboardBtn')?.classList.add('active');
+    document.getElementById('dashboardBtn2')?.classList.add('active2');
 }
 
 function openDashboard() {
-    refreshStats()
+    refreshStats?.(); // Check if refreshStats is defined
     setActiveViewWithButton('dashboardBtn', 'dashboard');
+    document.getElementById('dashboardBtn2')?.classList.add('active2');
 }
 
 function openReports() {
     setActiveViewWithButton('reportsBtn', 'reports');
-}
-
-function setActiveViewWithButton(btnId, viewId) {
-    document.querySelectorAll('.navBtns').forEach(btn => btn.classList.remove('active'));
-    document.getElementById(btnId).classList.add('active');
-    setActiveView(viewId);
+    document.getElementById('reportsBtn2')?.classList.add('active2');
 }
 
 function getExpensesFromDB() {
     const token = localStorage.getItem('token')
     fetch(`/expenses/${token}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
-        .then(response => {
+    .then(response => {
             if (!response.ok) throw new Error('response not okay');
             return response.json();
         })
