@@ -515,11 +515,9 @@ header h1 {
   }
 }
 
-
 #reportTableBody .reportRow .amountColumn {
   color: var(--secondaryColor);
 }
-
 
 #mobileNav {
   width: 100%;
@@ -527,16 +525,21 @@ header h1 {
   align-items: center;
   justify-content: space-evenly;
 }
-#mobileNav button{
+#mobileNav button {
   margin: 10px 10%;
 }
 #mobileNav {
   display: none;
 }
 #daysExpenseHeader,
-  #monthsExpenseHeader {
-    font-weight: 400;
-  }
+#monthsExpenseHeader {
+  font-weight: 400;
+}
+
+#validReason{
+  color: #ff2a31;
+}
+
 /* mobile  */
 
 @media (max-width: 800px) {
@@ -662,22 +665,21 @@ header h1 {
   #dashboardTable {
     display: none;
   }
-  .popup-content{
+  .popup-content {
     padding: 15% 10%;
   }
-  .popup-content label{
-
+  .popup-content label {
     font-size: 15px;
   }
-  .popup-content h2{
+  .popup-content h2 {
     font-size: 30px;
   }
-  
 }
-#noData{
+#noData {
   font-size: large;
   opacity: 0.8;
 }
-#dashboardHeader h2,#reportsHeader h2{
+#dashboardHeader h2,
+#reportsHeader h2 {
   font-size: 2em;
 }

@@ -100,6 +100,19 @@ function getExpensesFromDB() {
 // }
 
 function addExpense() {
+    const amount = document.getElementById('amountInp').value;
+    const reason = document.getElementById('reasonInp').value;
+    const validReason = document.getElementById('validReason')
+
+    if(reason.length<3){
+        validReason.innerText= 'Reason is too short'
+        return 
+    }
+    else{
+        validReason.innerText= ''
+
+    }
+
     const button = document.getElementById('newExpenseBtn');
     const buttonText = button.querySelector('.button-text');
     const spinner = button.querySelector('.spinner');
@@ -109,8 +122,7 @@ function addExpense() {
     spinner.classList.remove('hidden');
     button.disabled = true;
 
-    const amount = document.getElementById('amountInp').value;
-    const reason = document.getElementById('reasonInp').value;
+   
     const token = localStorage.getItem('token'); // Retrieve token from localStorage
 
     // Debugging logs
