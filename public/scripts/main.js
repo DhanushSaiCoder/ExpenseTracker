@@ -72,6 +72,7 @@ function openDashboard() {
 function openReports() {
     setActiveViewWithButton('reportsBtn', 'reports');
     document.getElementById('reportsBtn2')?.classList.add('active2');
+    getExpensesFromDB()
 }
 
 function getExpensesFromDB() {
@@ -155,6 +156,11 @@ function addExpense() {
 
 
 function displayReportTable(ex) {
+    if(ex.length == 0) {
+        document.getElementById('reportTable').style.display = 'none'
+        const noData = document.getElementById('noData')
+        noData.innerText = 'No expenses yet!'
+    }
     let bodyHtml = '';
     ex.reverse().forEach(item => {
         bodyHtml += `<tr class="reportRow">

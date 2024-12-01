@@ -672,3 +672,10 @@ header h1 {
   }
   
 }
+#noData{
+  font-size: large;
+  opacity: 0.8;
+}
+#dashboardHeader h2,#reportsHeader h2{
+  font-size: 2em;
+}
