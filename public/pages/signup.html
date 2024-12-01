@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up Page</title>
-  <style>
-    /* Reset some basic styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up Page</title>
+    <style>
+      /* Reset some basic styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    /* Style the body */
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f4f4f4;
-      font-family: "Lexend", sans-serif;
+      /* Style the body */
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+        font-family: "Lexend", sans-serif;
         background: linear-gradient(
           170deg,
           rgba(14, 3, 45, 0.95),
@@ -28,126 +28,182 @@
         );
         color: #dcf1ff;
         background-attachment: fixed;
-    }
+      }
 
-    /* Style the sign-up container */
-    .signup-container {
-      background: transparent;
+      /* Style the sign-up container */
+      .signup-container {
+        background: transparent;
         padding: 40px;
         border-radius: 10px;
         border: 1.5px solid white;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         width: 300px;
-    }
+      }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
 
-    /* Style the input fields */
-    .input-group {
-      margin-bottom: 15px;
-    }
+      /* Style the input fields */
+      .input-group {
+        margin-bottom: 15px;
+      }
 
-    label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
 
-    input {
-      width: 100%;
+      input {
+        width: 100%;
         padding: 10px;
         margin-top: 5px;
         background: transparent;
         border: 1px solid #ccc;
         border-radius: 4px;
         color: white;
-    }
+      }
 
-    /* Style the button */
-    button {
-      width: 100%;
-      padding: 10px;
-      background-color: #ffdd20;
-      color: rgb(32, 29, 0);
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+      /* Style the button */
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #ffdd20;
+        color: rgb(32, 29, 0);
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+      }
 
-    button:hover {
-      background-color: #ffe23f;
+      button:hover {
+        background-color: #ffe23f;
+      }
 
-    }
+      /* Style the feedback message */
+      .feedback {
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        height: 20px;
+        margin: 20px;
+      }
 
-    /* Style the link */
-    .login-link {
-      display: block;
-      text-align: center;
-      margin-top: 10px;
-    }
-    .login-link a {
-      text-decoration: none;
-      color: #ffd700;
-    }
-    .login-link a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <div class="signup-container">
-    <h2>Sign Up</h2>
-    <div class="input-group">
-      <label for="username">Username</label>
-      <input type="text" id="username" required>
+      .feedback.error, .error {
+        color: #ff6b6b;
+      }
+
+      .feedback.success, .success {
+        color: #4caf50;
+      }
+
+      /* Style the link */
+      .login-link {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      .login-link a {
+        text-decoration: none;
+        color: #ffd700;
+      }
+
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="signup-container">
+      <h2>Sign Up</h2>
+      <form id="signupForm">
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" required />
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required />
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required />
+        </div>
+        <div class="feedback" id="feedback"></div>
+        <button id="signUpBtn" type="submit">Sign Up</button>
+      </form>
+      <div class="login-link">
+        <p>Already have an account? <a href="/auth/login">Login</a></p>
+      </div>
     </div>
-    <div class="input-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" required>
-    </div>
-    <div class="input-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" required>
-    </div>
-    <button onclick="signup(event)">Sign Up</button>
-    <div class="login-link">
-      <p>Already have an account? <a href="/auth/login">Login</a></p>
-    </div>
-  </div>
 
-  <script>
-    function signup(event){
-        event.preventDefault();  // Prevent form submission
+    <script>
+      const form = document.getElementById("signupForm");
+      const feedback = document.getElementById("feedback");
 
-        const username = document.getElementById('username').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+      form.onsubmit = async (event) => {
+        event.preventDefault();
 
-        fetch('/auth/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username,
-                email,
-                password
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Signup success:', data);
-            localStorage.setItem('token',data.token)
-        })
-        .catch(err => {
-            console.error('Error signing up:', err);
-            
-        });
-    }
-  </script>
-</body>
+        const username = document.getElementById("username").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        feedback.style.display = "none"; // Hide feedback by default
+        const button = document.getElementById("signUpBtn");
+        button.classList.add("loading");
+
+        // Simple validation
+        if (!username) {
+          showFeedback("Enter a valid username.", "error");
+          return;
+        }
+        if (!email || !validateEmail(email)) {
+          showFeedback("Enter a valid email address.", "error");
+          return;
+        }
+        if (!password || password.length < 6) {
+          showFeedback("Password must be at least 6 characters.", "error");
+          return;
+        }
+
+        try {
+          const response = await fetch("/auth/signup", {
+            // replace with your API endpoint
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, email, password }),
+          });
+          const data = await response.json();
+          button.classList.remove("loading");
+
+          if (response.ok) {
+            localStorage.setItem("token", data.token);
+            console.log("Sign-up successful", data);
+            window.location.href = "/"; 
+          } else {
+            showFeedback(data.error || "Sign-up failed, try again.", "error");
+          }
+        } catch (error) {
+          button.classList.remove("loading");
+          console.error("Error signing up:", error);
+          showFeedback("An unexpected error occurred, try again.", "error");
+        }
+      };
+
+      function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+      }
+
+      function showFeedback(message, type) {
+        feedback.textContent = message;
+        feedback.style.display = "block";
+        feedback.className = type;
+        feedback.classList.add = type
+      }
+    </script>
+  </body>
 </html>
