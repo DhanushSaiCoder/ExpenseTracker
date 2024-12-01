@@ -45,6 +45,18 @@
         <button onclick="signout()" id="signOutBtn">Sign Out</button>
       </div>
     </header>
+    <div id="mobileNav">
+      <button
+            id="dashboardBtn"
+            onclick="openDashboard()"
+            class="navBtns active"
+          >
+            Dashboard
+          </button>
+      <button id="reportsBtn" onclick="openReports()" class="navBtns">
+        Report
+      </button>
+    </div>
     <nav class="sidebar">
       <ul>
         <li>
@@ -59,7 +71,7 @@
 
         <li>
           <button id="reportsBtn" onclick="openReports()" class="navBtns">
-            Reports
+            Report
           </button>
         </li>
       </ul>
