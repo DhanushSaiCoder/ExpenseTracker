@@ -19,7 +19,7 @@ function signout() {
     const token = localStorage.getItem('token');
     localStorage.removeItem('token')
     console.log(token);
-    
+
     fetch('/auth/signout', {
         method: 'POST',
         headers: {
@@ -29,15 +29,15 @@ function signout() {
             token: token
         })
     })
-    .then(response => {
-        if (!response.ok) throw new Error('Response not okay');
-        return response.json();
-    })
-    .then(data => console.log(data))
-    .catch(err => {
-        console.error('Error signing out:', err);
-    });
-    window.location.href='/auth/signup'
+        .then(response => {
+            if (!response.ok) throw new Error('Response not okay');
+            return response.json();
+        })
+        .then(data => console.log(data))
+        .catch(err => {
+            console.error('Error signing out:', err);
+        });
+    window.location.href = '/auth/signup'
 }
 
 function clearActiveClasses() {
@@ -78,14 +78,14 @@ function openReports() {
 function getExpensesFromDB() {
     const token = localStorage.getItem('token')
     fetch(`/expenses/${token}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
-    .then(response => {
+        .then(response => {
             if (!response.ok) throw new Error('response not okay');
             return response.json();
         })
         .then(data => displayReportTable(data))
         .catch(err => console.error('Error getting expenses:', err));
 
-        
+
 }
 
 // function displayExpenses(ex) {
@@ -104,12 +104,12 @@ function addExpense() {
     const reason = document.getElementById('reasonInp').value;
     const validReason = document.getElementById('validReason')
 
-    if(reason.length<3){
-        validReason.innerText= 'Reason is too short'
-        return 
+    if (reason.length < 3) {
+        validReason.innerText = 'Reason is too short'
+        return
     }
-    else{
-        validReason.innerText= ''
+    else {
+        validReason.innerText = ''
 
     }
 
@@ -122,7 +122,7 @@ function addExpense() {
     spinner.classList.remove('hidden');
     button.disabled = true;
 
-   
+
     const token = localStorage.getItem('token'); // Retrieve token from localStorage
 
     // Debugging logs
@@ -168,17 +168,17 @@ function addExpense() {
 
 
 function displayReportTable(ex) {
-    if(ex.length == 0) {
+    if (ex.length == 0) {
         document.getElementById('reportTable').style.display = 'none'
         const noData = document.getElementById('noData')
         noData.innerText = 'No expenses yet!'
         return;
     }
-    else{
+    else {
         document.getElementById('reportTable').style.display = 'block'
         const noData = document.getElementById('noData')
         noData.innerText = ''
-        
+
     }
     let bodyHtml = '';
     ex.reverse().forEach(item => {
