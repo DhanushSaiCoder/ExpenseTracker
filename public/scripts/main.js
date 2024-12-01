@@ -2,6 +2,7 @@ window.onload = function () {
     document.querySelector("#dashboardHeader h3").textContent = formatDateToDDMMYYYY(new Date());
     getExpensesFromDB();
     setDefaultView();
+    refreshStats()
 };
 
 if (!localStorage.getItem('token')) window.location.href = '/auth/login'
@@ -52,6 +53,7 @@ function setDefaultView() {
 }
 
 function openDashboard() {
+    refreshStats()
     setActiveViewWithButton('dashboardBtn', 'dashboard');
 }
 
@@ -81,7 +83,7 @@ function displayExpenses(ex) {
     for (let i = ex.length - 1; i >= 0 && k < 5; i--, k++) {
         tbody += `<tr><td>${ex[i].amount}</td><td>${ex[i].reason}</td></tr>`;
     }
-    tbody += `<tr><td colspan="2"><button id="showMore" onclick="openReports()">Show more...</button></td></tr>`;
+    tbody += `<tr><td colspan="2"><button id="showMore" onclick="openReports()">Show Report</button></td></tr>`;
     document.getElementById('tbody').innerHTML = tbody;
     displayReportTable(ex);
 }
@@ -132,6 +134,7 @@ function addExpense() {
             spinner.classList.add('hidden');
             button.disabled = false;
         });
+        refreshStats()
 }
 
 
@@ -264,3 +267,56 @@ function updateExpense(id) {
             button.disabled = false;
         });
 }
+
+function refreshStats() {
+    fetch('/expenses', { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Response not okay');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const dayExpensesTxt = document.getElementById('daysExpensesTxt');
+            const monthExpensesTxt = document.getElementById('monthsExpenseTxt');
+
+            const today = new Date();
+            const currDate = formatDateToDDMMYYYY(today);
+            const currMonth = today.getMonth(); // Month is zero-indexed
+
+            let dailyExpenses = 0;
+            let monthlyExpenses = 0;
+
+            data.forEach((expense, index) => {
+                if (!expense || !expense.date || expense.amount == null) {
+                    return;
+                }
+
+                const expenseDate = new Date(expense.date); // Ensure Date object
+                const expenseAmount = expense.amount;
+
+                if (isNaN(expenseDate.getTime())) {
+                    return;
+                }
+
+                // Daily Expenses
+                if (expenseDate.toDateString() === today.toDateString()) {
+                    dailyExpenses += expenseAmount;
+                }
+
+                // Monthly Expenses
+                if (expenseDate.getMonth() === currMonth && expenseDate.getFullYear() === today.getFullYear()) {
+                    monthlyExpenses += expenseAmount;
+                }
+            });
+
+            // Update the DOM with the totals
+            dayExpensesTxt.textContent = `₹${dailyExpenses}`;
+            monthExpensesTxt.textContent = `₹${monthlyExpenses}`;
+        })
+        .catch(err => {
+            document.getElementById('errorTxt').textContent = 'Failed to fetch expense data. Please try again later.';
+            console.error('Error getting expenses:', err);
+        });
+}
+

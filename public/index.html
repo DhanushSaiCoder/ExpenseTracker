@@ -15,12 +15,24 @@
   <body>
     <div id="popup" class="popup">
       <div class="popup-content">
-        <button onclick="closePopup()" id="closePopupBtn" class="close-btn"><span >&times;</span></button>
+        <button onclick="closePopup()" id="closePopupBtn" class="close-btn">
+          <span>&times;</span>
+        </button>
         <h2>Edit Expense</h2>
         <label for="amountInp">Amount:</label>
-        <input class="popupInp" type="number" id="amountInpPopup" placeholder="Enter amount" />
+        <input
+          class="popupInp"
+          type="number"
+          id="amountInpPopup"
+          placeholder="Enter amount"
+        />
         <label for="reasonInp">Reason:</label>
-        <input class="popupInp" type="text" id="reasonInpPopup" placeholder="Enter reason" />
+        <input
+          class="popupInp"
+          type="text"
+          id="reasonInpPopup"
+          placeholder="Enter reason"
+        />
         <button id="submitEditBtn">Save Changes</button>
       </div>
     </div>
@@ -63,15 +75,12 @@
           <div id="dashboardStatsDiv">
             <div id="daysExpenseDiv">
               <h3 id="daysExpenseHeader">Day Total Expenses</h3>
-              <h3 id="daysExpensesTxt">₹63/-</h3>
+              <h3 id="daysExpensesTxt">₹---/-</h3>
             </div>
-            <div id="weeksExpenseDiv">
-              <h3 id="weekExpenseHeader">Week Total Expenses</h3>
-              <h3 id="weekExpensesTxt">₹358/-</h3>
-            </div>
+
             <div id="monthsExpenseDiv">
               <h3 id="monthsExpenseHeader">Month Total Expenses</h3>
-              <h3 id="monthsExpenseTxt">₹1083/-</h3>
+              <h3 id="monthsExpenseTxt">₹---/-</h3>
             </div>
           </div>
 
@@ -85,9 +94,7 @@
               </thead>
               <tbody id="tbody">
                 <td colspan="2">
-                  <button onclick="openAddExpense()" id="showMore">
-                    Show more
-                  </button>
+                  <button onclick="openAddExpense()" id="showMore">Show Report</button>
                 </td>
               </tbody>
             </table>
@@ -110,7 +117,6 @@
                 <span class="button-text">Add Expense</span>
                 <span class="spinner hidden"></span>
               </button>
-              
             </div>
           </div>
         </div>
