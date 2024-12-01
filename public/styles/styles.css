@@ -343,13 +343,14 @@ header h1 {
   opacity: 1;
 }
 #reportsContent {
-  border: 1px solid rgba(251, 250, 255, 0.195);
+  border: 1px solid rgba(255, 255, 255, 0.158);
 }
 #reportTable {
   width: 70vw;
   border-radius: 10px;
   border-collapse: collapse; /* Ensure proper spacing */
   box-shadow: 07px 7px 17px rgba(0, 0, 0, 0.281);
+  min-width: 70vw;
 }
 
 #reportTable thead {
@@ -364,6 +365,7 @@ header h1 {
   padding: 10px;
   border-bottom: 1px solid var(--hoverColor);
   color: #d3d3d3;
+  min-width: 17.5vw;
 }
 
 #reportTable tbody tr td {
