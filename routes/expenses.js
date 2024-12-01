@@ -14,7 +14,16 @@ router.get('/', async (req, res) => {
         res.status(500).send({ message: "Internal Server Error" });
     }
 });
-
+router.get('/edit/:id',async (req,res) => {
+    try {
+        const id = req.params.id;
+        const expense = await Expense.findById(id)
+        res.json(expense)
+    } catch (error) {
+        console.error("Error getting expenses:", error);
+        res.status(500).send({ message: "Internal Server Error" });
+    }
+})
 router.get('/:token', async (req, res) => {
     try {
         const { token } = req.params; // Extract token from request parameters

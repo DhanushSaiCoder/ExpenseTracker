@@ -158,10 +158,6 @@ function displayReportTable(ex) {
     document.getElementById('reportTableBody').innerHTML = bodyHtml;
 }
 
-function editExpense(id) {
-    console.log(id);
-}
-
 function formatDateToDDMMYYYY(date) {
     const d = new Date(date);
     const day = String(d.getDate()).padStart(2, '0'); // Ensures 2 digits for day
@@ -202,7 +198,7 @@ function editExpense(id) {
     button.disabled = true;
 
     // Show the popup after fetching the data
-    fetch(`/expenses/${id}`, {
+    fetch(`/expenses/edit/${id}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     })
