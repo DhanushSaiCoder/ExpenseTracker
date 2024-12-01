@@ -1,8 +1,8 @@
 window.onload = function () {
     document.querySelector("#dashboardHeader h3").textContent = formatDateToDDMMYYYY(new Date());
     getExpensesFromDB();
-    setDefaultView();
     refreshStats()
+    setDefaultView();
 };
 
 if (!localStorage.getItem('token')) window.location.href = '/auth/login'
@@ -160,7 +160,7 @@ function addExpense() {
             spinner.classList.add('hidden');
             button.disabled = false;
         });
-
+    getExpensesFromDB();
     refreshStats();
 }
 
