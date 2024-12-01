@@ -140,7 +140,8 @@ header h1 {
   overflow-y: auto;
 }
 
-.navBtns,.navBtns2  {
+.navBtns,
+.navBtns2 {
   background: transparent;
   border: none;
   font-size: large;
@@ -150,7 +151,8 @@ header h1 {
   opacity: 0.6;
 }
 
-.navBtns:hover,.navBtns2:hover {
+.navBtns:hover,
+.navBtns2:hover {
   cursor: pointer;
   color: #ffe865;
 }
@@ -162,12 +164,14 @@ header h1 {
   opacity: 1;
   color: var(--secondaryColor);
 }
-.navBtns.active,.navBtns2.active {
+.navBtns.active,
+.navBtns2.active {
   color: #ffd700; /* Gold color for active button text */
   position: relative; /* To position the dot correctly */
 }
 
-.navBtns.active::before,.navBtns2.active::before {
+.navBtns.active::before,
+.navBtns2.active::before {
   content: "•"; /* Unicode character for the dot */
   font-size: 18px; /* Adjust size if needed */
   margin-right: 8px; /* Space between dot and text */
@@ -241,7 +245,6 @@ header h1 {
 }
 #monthsExpenseTxt {
   color: rgb(255, 185, 56);
-
 }
 #daysExpensesTxt {
   color: rgb(149, 255, 27);
@@ -421,7 +424,7 @@ header h1 {
 .popup-content {
   background-color: #dcf1ff;
   color: #0c0c0c;
-  padding: 2% 6%;
+  padding: 5% 6%;
   border-radius: 15px;
   width: auto;
   text-align: center;
@@ -509,13 +512,29 @@ header h1 {
     transform: rotate(360deg);
   }
 }
+
+
+#reportTableBody .reportRow .amountColumn {
+  color: var(--secondaryColor);
+}
+
+
+#mobileNav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#mobileNav button{
+  margin: 10px 10%;
+}
 #mobileNav {
   display: none;
 }
-
-#reportTableBody .reportRow .amountColumn{
-  color: var(--secondaryColor);
-}
+#daysExpenseHeader,
+  #monthsExpenseHeader {
+    font-weight: 400;
+  }
 /* mobile  */
 
 @media (max-width: 600px) {
@@ -586,7 +605,8 @@ header h1 {
     border-bottom: 5px solid var(--hoverColor);
   }
 
-  .navBtn,.navBtns2 {
+  .navBtn,
+  .navBtns2 {
     width: auto;
     padding: 10px 10px;
     margin: 0 20px;
@@ -604,41 +624,51 @@ header h1 {
     min-width: 120px;
     min-height: 120px;
     border-radius: 60px;
-    }
-    #dashboardTable{
-      background-color: var(--nonHoverColor);
-      padding:10px 20px;
-      border: 0.1px solid var(--hoverColor);
-      border-radius: 10px;
-      margin: 20px 0;
-    }
-    #dashboardStatsDiv{
-      margin-bottom: 0;
-    }
-
-    #daysExpenseHeader,#monthsExpenseHeader {
-
-      font-size: 9px;
-      font-weight: 400;
-    }
-    #daysExpensesTxt,#monthsExpenseTxt{
-      font-size: 16px;
-    }
-    #reports{
-      align-items: center;
-    }
-    #reportTable{
-      width: 99%;
-
-    }
-    #reportTable thead tr th{
-      font-size: 0.731em;
-    }
-    .opColumn{
-      text-align:right;
-    }
-    #dashboardTable{
-      display: none;
-    }
-    
   }
+  #dashboardTable {
+    background-color: var(--nonHoverColor);
+    padding: 10px 20px;
+    border: 0.1px solid var(--hoverColor);
+    border-radius: 10px;
+    margin: 20px 0;
+  }
+  #dashboardStatsDiv {
+    margin-bottom: 0;
+  }
+
+  #daysExpenseHeader,
+  #monthsExpenseHeader {
+    font-size: 9px;
+    font-weight: 400;
+  }
+  #daysExpensesTxt,
+  #monthsExpenseTxt {
+    font-size: 16px;
+  }
+  #reports {
+    align-items: center;
+  }
+  #reportTable {
+    width: 99%;
+  }
+  #reportTable thead tr th {
+    font-size: 0.731em;
+  }
+  .opColumn {
+    text-align: right;
+  }
+  #dashboardTable {
+    display: none;
+  }
+  .popup-content{
+    padding: 15% 10%;
+  }
+  .popup-content label{
+
+    font-size: 15px;
+  }
+  .popup-content h2{
+    font-size: 30px;
+  }
+  
+}
