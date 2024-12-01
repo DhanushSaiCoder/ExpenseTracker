@@ -616,5 +616,20 @@ header h1 {
     #daysExpensesTxt,#monthsExpenseTxt{
       font-size: 16px;
     }
+    #reports{
+      border: 1px solid red;
+      align-items: center;
+    }
+    #reportTable{
+      width: 99%;
+
+    }
+    #reportTable thead tr th{
+      font-size: 0.731em;
+    }
+    .opColumn{
+      text-align:right;
+    }
+
     
   }
