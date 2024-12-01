@@ -220,8 +220,8 @@ header h1 {
 #daysExpenseDiv {
   width: 250px;
   height: 250px;
-  /* min-width: 250px;
-  min-height: 250px; */
+  min-width: 250px;
+  min-height: 250px;
   border: 0.1px solid var(--hoverColor);
   background-color: var(--nonHoverColor);
   border-radius: 6.5%;
@@ -537,7 +537,7 @@ header h1 {
   }
 /* mobile  */
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   #mobileNav {
     display: flex;
     margin-top: 75px;
