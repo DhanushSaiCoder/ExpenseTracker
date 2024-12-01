@@ -68,13 +68,16 @@ function setActiveViewWithButton(btnId, viewId) {
 }
 
 function getExpensesFromDB() {
-    fetch('/expenses', { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+    const token = localStorage.getItem('token')
+    fetch(`/expenses/${token}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
         .then(response => {
             if (!response.ok) throw new Error('response not okay');
             return response.json();
         })
         .then(data => displayExpenses(data))
         .catch(err => console.error('Error getting expenses:', err));
+
+        
 }
 
 function displayExpenses(ex) {
@@ -273,7 +276,8 @@ function updateExpense(id) {
 }
 
 function refreshStats() {
-    fetch('/expenses', { method: 'GET', headers: { 'Content-Type': 'application/json' } })
+    const token = localStorage.getItem('token')
+    fetch(`/expenses/${token}`, { method: 'GET', headers: { 'Content-Type': 'application/json' } })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Response not okay');

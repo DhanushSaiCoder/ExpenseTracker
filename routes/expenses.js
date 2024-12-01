@@ -15,15 +15,21 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:token', async (req, res) => {
     try {
-        const expense = await Expense.findById(req.params.id);
-        res.json(expense);
+        const { token } = req.params; // Extract token from request parameters
+        const { userId } = jwt.decode(token); // Decode token to get userId
+
+        const expenses = await Expense.find({ user: userId }); // Find expenses by userId
+        res.json(expenses); // Respond with the expenses
     } catch (error) {
-        console.error("Error getting expense:", error);
+        console.error("Error getting expenses:", error);
         res.status(500).send({ message: "Internal Server Error" });
     }
 });
+
+
+ 
 
 function validateExpenseWithoutUser(expense) {
     const schema = Joi.object({
