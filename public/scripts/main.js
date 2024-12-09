@@ -11,11 +11,13 @@ function closePopup() {
 }
 
 function logout() {
+  if(!confirm('Are You Sure')) return;
     localStorage.removeItem('token')
     window.location.href = '/auth/login'
 }
 
 function signout() {
+  if(!confirm('Are You Sure')) return;
     const token = localStorage.getItem('token');
     localStorage.removeItem('token')
     console.log(token);
