@@ -17,7 +17,7 @@ function logout() {
 }
 
 function signout() {
-  if(!confirm('Are You Sure')) return;
+  if(!confirm('Your account will be deleted !')) return;
     const token = localStorage.getItem('token');
     localStorage.removeItem('token')
     console.log(token);
